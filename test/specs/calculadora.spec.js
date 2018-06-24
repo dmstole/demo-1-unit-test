@@ -1,28 +1,33 @@
-describe("Verificação da calculadora", function () {
+describe("Verificação da calculadora", () => {
 
-   describe("método somar", function () {
-
-      it("quando informar valor 2 e valor 3 deve retornar 5", function () {
-         const resultado = Calculadora.somar(2, 3);
-         expect(resultado).to.be.eql(5);
-      });
-
-      const _dados = Gerador.criarMassaDados();
+   describe("método somar", () => {
+      const _dados = Gerador.criarDadosSomar();
       _dados.forEach(item => {
-         it(`quando informar valor ${item.valor1} e valor ${item.valor2} deve retornar ${item.esperado}`,
-            function (done) {
-               try {
-                  const resultado = Calculadora.somar(item.valor1, item.valor2);
-                  expect(resultado).to.be.eql(item.esperado);
-               } catch (error) {
-                  expect(function () {
-                     Calculadora.somar(item.valor1, item.valor2);
-                  }).to.throw("Dados inválidos");
-               }
-               done();
-            });
+         it(`ao informar valor ${item.valor1} e valor ${item.valor2} deve retornar ${item.esperado}`, done => {
+            try {
+               const _resultado = Calculadora.somar(item.valor1, item.valor2);
+               expect(_resultado).to.be.eql(item.esperado);
+            } catch (error) {
+               expect(() => Calculadora.somar(item.valor1, item.valor2)).to.throw("Dados inválidos");
+            }
+            done();
+         });
       });
+   });
 
+   describe("método substrair", () => {
+      const _dados = Gerador.criarDadosSubtrair();
+      _dados.forEach(item => {
+         it(`ao informar valor ${item.valor1} e valor ${item.valor2} deve retornar ${item.esperado}`, done => {
+            try {
+               const _resultado = Calculadora.subtrair(item.valor1, item.valor2);
+               expect(_resultado).to.be.eql(item.esperado);
+            } catch (error) {
+               expect(() => Calculadora.subtrair(item.valor1, item.valor2)).to.throw("Dados inválidos");
+            }
+            done();
+         });
+      });
    });
 
 });

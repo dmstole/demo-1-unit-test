@@ -9,17 +9,17 @@ module.exports = function () {
       static somar(valor1, valor2) {
          this.validarValores(valor1, valor2);
 
-         const resultado = parseFloat(valor1) + parseFloat(valor2);
+         const _resultado = parseFloat(valor1) + parseFloat(valor2);
 
-         return resultado;
+         return _resultado;
       }
 
       static subtrair(valor1, valor2) {
          this.validarValores(valor1, valor2);
 
-         const resultado = parseFloat(valor1) - parseFloat(valor2);
+         const _resultado = parseFloat(valor1) - parseFloat(valor2);
 
-         return resultado;
+         return _resultado;
       }
 
       static validarValores(valor1, valor2) {
